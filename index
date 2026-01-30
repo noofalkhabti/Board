@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>لوحة تحفيز ثالث ثانوي شعبة ٢</title>
+
+  <style>
+    :root{
+      --bg1:#fff7fb;
+      --bg2:#f3fff7;
+      --card:#ffffff;
+      --text:#111827;
+      --muted:#6b7280;
+
+      --accent:#22c55e;
+      --accent2:#a855f7;
+      --accent3:#f97316;
+      --accent4:#06b6d4;
+
+      --star-off:#e5e7eb;
+      --star-on:#fbbf24;
+
+      --shadow: 0 10px 25px rgba(0,0,0,.08);
+      --radius: 18px;
+    }
+
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, "Segoe UI", Tahoma, Arial;
+      background:
+        radial-gradient(1200px 700px at 20% 10%, var(--bg2), transpa
