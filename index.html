@@ -1,9 +1,9 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>لوحة تحفيز ثالث ثانوي شعبة ٢</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>لوحة تحفيز فيزياء ٣-٢ للصف الثالث ثانوي شعبة ٢</title>
 
   <style>
     :root{
@@ -12,13 +12,14 @@
       --card:#ffffff;
       --text:#111827;
       --muted:#6b7280;
-      --accent:#22c55e;
-      --accent2:#a855f7;
-      --accent3:#f97316;
+
+      --shadow:0 10px 25px rgba(0,0,0,.08);
+      --radius:18px;
+
       --star-off:#e5e7eb;
       --star-on:#fbbf24;
-      --radius:18px;
-      --shadow:0 10px 25px rgba(0,0,0,.08);
+
+      --ring:#8fe0a5;
     }
 
     body{
@@ -32,36 +33,95 @@
     }
 
     .wrap{
-      max-width:1100px;
-      margin:24px auto;
+      max-width:1180px;
+      margin:22px auto;
       padding:0 14px 30px;
     }
 
+    /* ✅ هيدر جديد: يمين عنوان اللوحة + يسار بيانات المدرسة */
     .header{
       display:flex;
       justify-content:space-between;
-      align-items:center;
+      align-items:flex-start;
       padding:14px 16px;
-      background:linear-gradient(135deg,
-        rgba(34,197,94,.18),
-        rgba(168,85,247,.14),
-        rgba(249,115,22,.14));
+      background:linear-gradient(135deg, rgba(34,197,94,.18), rgba(168,85,247,.14), rgba(249,115,22,.14));
       border-radius:var(--radius);
       box-shadow:var(--shadow);
-      font-weight:900;
+      gap:14px;
+    }
+
+    .titleBlock{
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      min-width:0;
+      flex:1 1 auto;
+    }
+
+    .titleRow{
+      font-weight:1000;
       font-size:22px;
+      line-height:1.25;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .metaRow{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
     }
 
     .badge{
+      font-size:13px;
       background:#fff;
-      padding:6px 10px;
+      padding:7px 12px;
       border-radius:999px;
       border:1px dashed #ccc;
+      white-space:nowrap;
+      color:#111;
+      font-weight:900;
+    }
+
+    /* يسار الهيدر */
+    .schoolBlock{
+      text-align:left; /* لأن هذا الجزء في الجانب الأيسر */
+      direction:rtl;
+      min-width:220px;
+      background:rgba(255,255,255,.65);
+      border:1px solid rgba(0,0,0,.06);
+      border-radius:14px;
+      padding:10px 12px;
+      box-shadow:0 6px 14px rgba(0,0,0,.06);
+      line-height:1.35;
+      flex:0 0 auto;
+    }
+    .schoolLine{
+      font-weight:1000;
       font-size:13px;
+      color:#111827;
+      display:flex;
+      gap:8px;
+      align-items:center;
+      justify-content:flex-start;
+      white-space:nowrap;
+    }
+    .schoolIcon{
+      font-size:16px;
+    }
+
+    .toolbar{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin:12px 0 10px;
+      align-items:center;
     }
 
     .search{
-      margin:14px 0;
+      flex:1 1 320px;
       background:#fff;
       border-radius:999px;
       padding:10px 12px;
@@ -75,135 +135,214 @@
       font-size:14px;
     }
 
+    .hint{
+      font-size:12px;
+      color:var(--muted);
+      font-weight:700;
+    }
+
     .grid{
       display:grid;
       grid-template-columns:repeat(2,1fr);
       gap:12px;
     }
-    @media(max-width:820px){
+    @media(max-width:900px){
       .grid{grid-template-columns:1fr;}
+      .schoolBlock{width:100%; text-align:right;}
+      .header{align-items:stretch;}
     }
 
     .card{
       background:#fff;
-      border-radius:var(--radius);
+      border-radius:22px;
       box-shadow:var(--shadow);
-      padding:12px;
+      padding:14px 14px 12px;
+      position:relative;
       display:flex;
       justify-content:space-between;
-      position:relative;
-      gap:10px;
+      gap:12px;
+      overflow:hidden;
     }
 
-    .rank{
+    .rankBadge{
       position:absolute;
       top:10px;
       left:10px;
       background:#fff;
       border-radius:999px;
       padding:6px 10px;
-      font-size:12px;
-      font-weight:900;
+      font-size:13px;
+      font-weight:1000;
       box-shadow:0 6px 14px rgba(0,0,0,.1);
     }
 
-    .student{
+    .left{
       display:flex;
+      flex-direction:column;
       gap:10px;
-      min-width:260px;
-      align-items:center;
+      flex:1 1 auto;
+      min-width:0;
     }
 
-    .avatar,.avatarLetter{
-      width:54px;
-      height:54px;
-      border-radius:50%;
-      border:3px solid rgba(34,197,94,.55);
+    .rows{
       display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:22px;
-      font-weight:900;
-      background:linear-gradient(135deg,
-        rgba(34,197,94,.15),
-        rgba(168,85,247,.12),
-        rgba(249,115,22,.12));
-      object-fit:cover;
-      flex:0 0 auto;
-    }
-
-    .name{
-      font-weight:900;
-      font-size:17px;
-    }
-
-    .avg{
-      margin-top:4px;
-      font-size:12px;
-      font-weight:700;
-      color:#7c2d12;
-    }
-
-    .ratings{
-      display:flex;
+      flex-direction:column;
       gap:10px;
-      flex-wrap:wrap;
-      align-items:center;
+      padding-left:8px;
     }
 
-    .metric{
+    .row{
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    .emoji{
+      width:28px;
       text-align:center;
-      font-size:13px;
-      font-weight:700;
-      min-width:90px;
+      font-size:20px;
+      line-height:1;
     }
 
     .stars{
       display:flex;
-      gap:3px;
-      justify-content:center;
+      gap:6px;
       direction:ltr;
     }
 
     .star{
-      font-size:20px;
+      font-size:22px;
       color:var(--star-off);
+      filter: drop-shadow(0 1px 0 rgba(0,0,0,.04));
+      user-select:none;
     }
-    .star.filled{
-      color:var(--star-on);
+    .star.filled{ color:var(--star-on); }
+
+    .right{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      flex:0 0 auto;
     }
+
+    .info{
+      text-align:right;
+      min-width:220px;
+      max-width:360px;
+    }
+    .name{
+      font-weight:1000;
+      font-size:22px;
+      line-height:1.2;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .avg{
+      margin-top:6px;
+      font-size:14px;
+      font-weight:900;
+      color:#7c2d12;
+    }
+
+    .avatarWrap{
+      width:74px;
+      height:74px;
+      border-radius:50%;
+      border:4px solid var(--ring);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:linear-gradient(135deg, rgba(34,197,94,.12), rgba(168,85,247,.10), rgba(249,115,22,.10));
+      flex:0 0 auto;
+      overflow:hidden;
+      position:relative;
+      user-select:none;
+    }
+
+    /* ✅ ضبط مقاس الصورة داخل الدائرة */
+    .avatarWrap img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center;
+      transform:scale(0.92); /* عدّليها إلى 0.85 لو تبين الصورة أصغر */
+      border-radius:50%;
+      display:block;
+      pointer-events:none;
+    }
+
+    .letter{
+      font-size:28px;
+      font-weight:1000;
+      color:#111;
+    }
+
+    .debug{
+      margin-top:10px;
+      background:#fff;
+      border:1px solid #eee;
+      border-radius:14px;
+      padding:10px 12px;
+      font-size:12px;
+      color:#7c2d12;
+      font-weight:800;
+      display:none;
+    }
+    .debug.show{ display:block; }
   </style>
 </head>
 
 <body>
 <div class="wrap">
+
   <div class="header">
-    🌟 لوحة تحفيز ثالث ثانوي شعبة ٢
-    <div class="badge" id="count">…</div>
+    <!-- ✅ يمين: عنوان اللوحة + عداد الطالبات -->
+    <div class="titleBlock">
+      <div class="titleRow">🌟 لوحة تحفيز فيزياء ٣-٢ للصف الثالث ثانوي شعبة ٢</div>
+      <div class="metaRow">
+        <div class="badge" id="count">جاري التحميل…</div>
+      </div>
+    </div>
+
+    <!-- ✅ يسار: بيانات المدرسة والمعلمة -->
+    <div class="schoolBlock">
+      <div class="schoolLine"><span class="schoolIcon">🏫</span>الثانوية الأولى في بيشة</div>
+      <div class="schoolLine"><span class="schoolIcon">👩‍🏫</span>معلمة المادة/ نوف خبتي</div>
+    </div>
   </div>
 
-  <div class="search">
-    🔎 <input id="search" placeholder="ابحثي باسم الطالبة">
+  <div class="toolbar">
+    <div class="search">
+      🔎 <input id="search" placeholder="ابحثي باسم الطالبة">
+    </div>
+    <div class="hint">⭐ المعدل = (المشاركة + التعاون + التركيز + الالتزام) ÷ 4 — السلوك عرض فقط</div>
   </div>
 
   <div class="grid" id="grid"></div>
+  <div class="debug" id="debug"></div>
 </div>
 
 <script>
-/* 🔗 رابط الشيت الجديد (CSV) */
-const CSV_URL =
-"https://docs.google.com/spreadsheets/d/e/2PACX-1vSOzNBxayAq8XiJpmr8H-eX1tmzU4EJFJAgTuxG-nSuJz7V46dGRPYjjfoL00P7nPVnin-tVIp7otDR/pub?output=csv";
+/* 🔗 رابط الشيت (CSV) */
+const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSOzNBxayAq8XiJpmr8H-eX1tmzU4EJFJAgTuxG-nSuJz7V46dGRPYjjfoL00P7nPVnin-tVIp7otDR/pub?output=csv";
 
-const grid = document.getElementById("grid");
+const grid  = document.getElementById("grid");
 const count = document.getElementById("count");
 const search = document.getElementById("search");
+const debug = document.getElementById("debug");
 
 let rows = [];
 
+/* ✅ أرقام من 0..5 */
 function clamp(n){
-  return Math.max(0, Math.min(5, Number(n) || 0));
+  const x = Number(n);
+  if (Number.isNaN(x)) return 0;
+  return Math.max(0, Math.min(5, x));
 }
 
+/* ✅ نجوم */
 function stars(v){
   v = clamp(v);
   let h = '<div class="stars">';
@@ -213,79 +352,191 @@ function stars(v){
   return h + '</div>';
 }
 
-function avatar(name, photo){
-  const letter = (name||"؟").trim().charAt(0)||"؟";
-  if(!photo){
-    return `<div class="avatarLetter">${letter}</div>`;
+/* ✅ استخراج أول حرف */
+function firstLetter(name){
+  const t = (name || "").trim();
+  if (!t) return "؟";
+  return t.replace(/["']/g,"").trim().charAt(0) || "؟";
+}
+
+/* ✅ توحيد روابط الصور */
+function normalizePhoto(photo){
+  let src = (photo || "").trim();
+  if(!src) return "";
+
+  if (src.includes("drive.google.com/file/d/")) {
+    const m = src.match(/\/d\/([-\w]{25,})/);
+    if (m && m[1]) return `https://lh3.googleusercontent.com/d/${m[1]}`;
   }
-  return `<img class="avatar" src="${photo}"
-    onerror="this.outerHTML='<div class=&quot;avatarLetter&quot;'>${letter}</div>'">`;
+
+  const idMatch = src.match(/id=([-\w]{25,})/);
+  if (idMatch && idMatch[1]) return `https://lh3.googleusercontent.com/d/${idMatch[1]}`;
+
+  if (/^[-\w]{25,}$/.test(src)) return `https://lh3.googleusercontent.com/d/${src}`;
+
+  return src;
+}
+
+/* ✅ الأفاتار */
+function avatarHTML(name, photo){
+  const letter = firstLetter(name);
+  const src = normalizePhoto(photo);
+
+  if(!src){
+    return `<div class="avatarWrap"><div class="letter">${letter}</div></div>`;
+  }
+
+  const safeName = (name||"").replace(/"/g,'');
+  return `
+    <div class="avatarWrap" oncontextmenu="return false;" title="${safeName}">
+      <img src="${src}" alt="صورة ${safeName}"
+        onerror="this.parentElement.innerHTML='<div class=&quot;letter&quot;>${letter}</div>';">
+    </div>
+  `;
+}
+
+/* ✅ CSV Parser صحيح */
+function parseCSV(text){
+  const out = [];
+  let row = [];
+  let cur = "";
+  let inQuotes = false;
+
+  for (let i=0; i<text.length; i++){
+    const c = text[i];
+    const next = text[i+1];
+
+    if (c === '"') {
+      if (inQuotes && next === '"') { cur += '"'; i++; }
+      else inQuotes = !inQuotes;
+      continue;
+    }
+
+    if (!inQuotes && (c === "," || c === "\t")) {
+      row.push(cur);
+      cur = "";
+      continue;
+    }
+
+    if (!inQuotes && (c === "\n" || c === "\r")) {
+      if (c === "\r" && next === "\n") i++;
+      row.push(cur);
+      out.push(row);
+      row = [];
+      cur = "";
+      continue;
+    }
+
+    cur += c;
+  }
+
+  if (cur.length || row.length){
+    row.push(cur);
+    out.push(row);
+  }
+
+  return out.filter(r => r.some(cell => (cell||"").trim() !== ""));
+}
+
+/* ✅ تحويل إلى Objects */
+function toObjects(matrix){
+  const headers = (matrix[0] || []).map(h => (h||"").trim());
+  return matrix.slice(1).map(cells=>{
+    const obj = {};
+    headers.forEach((h,i)=> obj[h] = (cells[i] ?? "").trim());
+    return obj;
+  });
+}
+
+/* ✅ حساب المعدل (بدون السلوك) */
+function scoreRow(r){
+  const p = clamp(r.participation);
+  const c = clamp(r.cooperation);
+  const f = clamp(r.focus);
+  const k = clamp(r.commitment);
+  return (p + c + f + k) / 4;
 }
 
 function render(){
   const q = search.value.trim();
-  const view = rows.filter(r=>!q || (r.name||"").includes(q));
+  const view = rows
+    .filter(r => !q || (r.name||"").includes(q))
+    .sort((a,b) => scoreRow(b) - scoreRow(a));
+
   count.textContent = `عدد الطالبات: ${view.length}`;
 
-  grid.innerHTML = view.map((r,i)=>{
+  grid.innerHTML = view.map((r, i) => {
     const p = clamp(r.participation);
     const c = clamp(r.cooperation);
     const f = clamp(r.focus);
+    const b = clamp(r.behavior);   // عرض فقط
     const k = clamp(r.commitment);
-    const b = clamp(r.behavior); // عرض فقط
-    const avg = ((p+c+f+k)/4).toFixed(1);
+
+    const avg = scoreRow(r).toFixed(1);
+    const avgText = `${avg} / 5`;
 
     return `
       <div class="card">
-        <div class="rank">#${i+1}</div>
-        <div class="student">
-          ${avatar(r.name, r.photo)}
-          <div>
-            <div class="name">${r.name||"طالبة"}</div>
-            <div class="avg">⭐ المعدل: ${avg} / 5</div>
+        <div class="rankBadge">#${i+1}</div>
+
+        <div class="left">
+          <div class="rows">
+            <div class="row"><div class="emoji">🤝</div>${stars(c)}</div>
+            <div class="row"><div class="emoji">👩‍🎓</div>${stars(p)}</div>
+            <div class="row"><div class="emoji">👀</div>${stars(f)}</div>
+            <div class="row"><div class="emoji">🧠</div>${stars(b)}</div>
+            <div class="row"><div class="emoji">🎯</div>${stars(k)}</div>
           </div>
         </div>
-        <div class="ratings">
-          <div class="metric">👩‍🎓${stars(p)}</div>
-          <div class="metric">🤝${stars(c)}</div>
-          <div class="metric">👀${stars(f)}</div>
-          <div class="metric">🧠${stars(b)}</div>
-          <div class="metric">🎯${stars(k)}</div>
+
+        <div class="right">
+          <div class="info">
+            <div class="name">${(r.name||"طالبة").replace(/["']/g,"")}</div>
+            <div class="avg">⭐ المعدل: <span style="direction:ltr; display:inline-block">${avgText}</span></div>
+          </div>
+          ${avatarHTML(r.name, r.photo)}
         </div>
       </div>
     `;
   }).join("");
 }
 
-fetch(CSV_URL)
-  .then(r=>r.text())
-  .then(t=>{
-    const lines = t.trim().split("\n");
-    const headers = lines.shift().split(",");
-    rows = lines.map(l=>{
-      const v = l.split(",");
-      let o = {};
-      headers.forEach((h,i)=>o[h]=v[i]);
-      return o;
-    });
+(async function init(){
+  try{
+    debug.classList.remove("show");
+    count.textContent = "جاري التحميل…";
 
-    rows.sort((a,b)=>{
-      const A=(clamp(a.participation)+clamp(a.cooperation)+clamp(a.focus)+clamp(a.commitment))/4;
-      const B=(clamp(b.participation)+clamp(b.cooperation)+clamp(b.focus)+clamp(b.commitment))/4;
-      return B-A;
-    });
+    const res = await fetch(CSV_URL, { cache: "no-store" });
+    if(!res.ok) throw new Error("تعذر تحميل بيانات الشيت. تأكدي أنه منشور للويب.");
 
+    const text = await res.text();
+    const matrix = parseCSV(text);
+    const objs = toObjects(matrix);
+
+    const required = ["name","photo","participation","cooperation","focus","behavior","commitment"];
+    const headers = (matrix[0]||[]).map(x => (x||"").trim());
+    const missing = required.filter(k => !headers.includes(k));
+
+    if(missing.length){
+      debug.textContent = "⚠️ ناقص أعمدة في الصف الأول: " + missing.join(", ");
+      debug.classList.add("show");
+    }
+
+    rows = objs;
     render();
-  })
-  .catch(err=>{
-    document.body.innerHTML =
-      `<div style="padding:24px;font-family:system-ui">
-        <h2>⚠️ لم يتم تحميل البيانات</h2>
-        <p>${err.message}</p>
-      </div>`;
-  });
+  }catch(err){
+    count.textContent = "لم يتم تحميل البيانات";
+    debug.textContent = "⚠️ " + err.message;
+    debug.classList.add("show");
+  }
+})();
 
-search.oninput = render;
+search.addEventListener("input", render);
+
+// منع فتح الصور بالزر اليمين
+document.addEventListener("contextmenu", (e)=>{
+  if (e.target.tagName === "IMG" || e.target.closest(".avatarWrap")) e.preventDefault();
+});
 </script>
 </body>
 </html>
