@@ -9,7 +9,6 @@
     :root{
       --bg1:#fff7fb;
       --bg2:#f3fff7;
-      --card:#ffffff;
       --text:#111827;
       --muted:#6b7280;
 
@@ -22,13 +21,8 @@
       --ring:#8fe0a5;
 
       --gold:#fbbf24;
-      --gold2:#f59e0b;
-
       --silver:#cbd5e1;
-      --silver2:#94a3b8;
-
       --bronze:#d6a25a;
-      --bronze2:#b7791f;
     }
 
     body{
@@ -58,45 +52,19 @@
       gap:14px;
     }
 
-    .titleBlock{
-      display:flex;
-      flex-direction:column;
-      gap:8px;
-      min-width:0;
-      flex:1 1 auto;
-    }
-
+    .titleBlock{ display:flex; flex-direction:column; gap:8px; min-width:0; flex:1 1 auto; }
     .titleRow{
-      font-weight:1000;
-      font-size:22px;
-      line-height:1.25;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
+      font-weight:1000; font-size:22px; line-height:1.25;
+      white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
     }
-
-    .metaRow{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      flex-wrap:wrap;
-    }
-
+    .metaRow{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
     .badge{
-      font-size:13px;
-      background:#fff;
-      padding:7px 12px;
-      border-radius:999px;
-      border:1px dashed #ccc;
-      white-space:nowrap;
-      color:#111;
-      font-weight:900;
+      font-size:13px; background:#fff; padding:7px 12px; border-radius:999px;
+      border:1px dashed #ccc; white-space:nowrap; color:#111; font-weight:900;
     }
 
     .schoolBlock{
-      text-align:left;
-      direction:rtl;
-      min-width:220px;
+      text-align:left; direction:rtl; min-width:220px;
       background:rgba(255,255,255,.65);
       border:1px solid rgba(0,0,0,.06);
       border-radius:14px;
@@ -106,23 +74,14 @@
       flex:0 0 auto;
     }
     .schoolLine{
-      font-weight:1000;
-      font-size:13px;
-      color:#111827;
-      display:flex;
-      gap:8px;
-      align-items:center;
-      justify-content:flex-start;
+      font-weight:1000; font-size:13px; color:#111827;
+      display:flex; gap:8px; align-items:center; justify-content:flex-start;
       white-space:nowrap;
     }
     .schoolIcon{ font-size:16px; }
 
     .toolbar{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      margin:12px 0 10px;
-      align-items:center;
+      display:flex; gap:10px; flex-wrap:wrap; margin:12px 0 10px; align-items:center;
     }
 
     .search{
@@ -133,39 +92,20 @@
       box-shadow:0 6px 14px rgba(0,0,0,.06);
       border:1px solid #ddd;
     }
-    .search input{
-      width:100%;
-      border:0;
-      outline:0;
-      font-size:14px;
-    }
+    .search input{ width:100%; border:0; outline:0; font-size:14px; }
 
     .legend{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      align-items:center;
-      font-size:12px;
-      font-weight:900;
-      color:#374151;
+      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
+      font-size:12px; font-weight:900; color:#374151;
       background:rgba(255,255,255,.65);
       border:1px solid rgba(0,0,0,.06);
       border-radius:999px;
       padding:8px 12px;
       box-shadow:0 6px 14px rgba(0,0,0,.05);
     }
-    .legend .item{
-      display:flex;
-      align-items:center;
-      gap:6px;
-      white-space:nowrap;
-    }
+    .legend .item{ display:flex; align-items:center; gap:6px; white-space:nowrap; }
 
-    .hint{
-      font-size:12px;
-      color:var(--muted);
-      font-weight:700;
-    }
+    .hint{ font-size:12px; color:var(--muted); font-weight:700; }
 
     .grid{
       display:grid;
@@ -190,32 +130,33 @@
       overflow:hidden;
     }
 
+    /* ✅ صار الرقم يمين أعلى بدل يسار */
     .rankBadge{
       position:absolute;
       top:10px;
-      left:10px;
+      right:10px;
       background:#fff;
       border-radius:999px;
       padding:6px 10px;
       font-size:13px;
       font-weight:1000;
-      box-shadow:0 6px 14px rgba(0,0,0,.1);
+      box-shadow:0 6px 14px rgba(0,0,0,.10);
+      border:1px solid rgba(0,0,0,.06);
+      z-index:3;
     }
 
-    /* ✅ يمين: الصورة ثم الاسم ثم المعدل */
+    /* ✅ يمين: الصورة ثم الاسم */
     .rightInfo{
       display:flex;
       align-items:center;
       gap:14px;
       flex:0 0 auto;
       margin-left:auto;
+      padding-right:34px; /* مساحة للـ # فوق */
+      position:relative;
     }
 
-    .info{
-      text-align:right;
-      min-width:220px;
-      max-width:360px;
-    }
+    .info{ text-align:right; min-width:220px; max-width:360px; }
 
     .nameRow{
       display:flex;
@@ -251,40 +192,13 @@
       min-width:0;
     }
 
-    .avg{
-      margin-top:6px;
-      font-size:14px;
-      font-weight:900;
-      color:#7c2d12;
-    }
+    .avg{ margin-top:6px; font-size:14px; font-weight:900; color:#7c2d12; }
 
-    .leftRates{
-      display:flex;
-      flex-direction:column;
-      gap:10px;
-      flex:1 1 auto;
-      min-width:0;
-    }
+    .leftRates{ display:flex; flex-direction:column; gap:10px; flex:1 1 auto; min-width:0; }
+    .row{ display:flex; align-items:center; gap:10px; }
+    .emoji{ width:28px; text-align:center; font-size:20px; line-height:1; }
 
-    .row{
-      display:flex;
-      align-items:center;
-      gap:10px;
-    }
-
-    .emoji{
-      width:28px;
-      text-align:center;
-      font-size:20px;
-      line-height:1;
-    }
-
-    .stars{
-      display:flex;
-      gap:6px;
-      direction:ltr;
-    }
-
+    .stars{ display:flex; gap:6px; direction:ltr; }
     .star{
       font-size:22px;
       color:var(--star-off);
@@ -319,32 +233,16 @@
       pointer-events:none;
     }
 
-    .letter{
-      font-size:30px;
-      font-weight:1000;
-      color:#111;
-    }
+    .letter{ font-size:30px; font-weight:1000; color:#111; }
 
-    /* ✅ أول 3 */
-    .top1 .avatarWrap{
-      border-color: var(--gold);
-      box-shadow: 0 0 0 3px rgba(251,191,36,.25), 0 10px 20px rgba(0,0,0,.10);
-      background: linear-gradient(135deg, rgba(251,191,36,.20), rgba(245,158,11,.10), rgba(255,255,255,.40));
-    }
-    .top2 .avatarWrap{
-      border-color: var(--silver);
-      box-shadow: 0 0 0 3px rgba(203,213,225,.25), 0 10px 20px rgba(0,0,0,.10);
-      background: linear-gradient(135deg, rgba(203,213,225,.35), rgba(148,163,184,.10), rgba(255,255,255,.40));
-    }
-    .top3 .avatarWrap{
-      border-color: var(--bronze);
-      box-shadow: 0 0 0 3px rgba(214,162,90,.20), 0 10px 20px rgba(0,0,0,.10);
-      background: linear-gradient(135deg, rgba(214,162,90,.22), rgba(183,121,31,.10), rgba(255,255,255,.40));
-    }
+    /* ✅ ألوان إطار أول 3 */
+    .top1 .avatarWrap{ border-color: var(--gold); box-shadow:0 0 0 3px rgba(251,191,36,.22), 0 10px 20px rgba(0,0,0,.10); }
+    .top2 .avatarWrap{ border-color: var(--silver); box-shadow:0 0 0 3px rgba(203,213,225,.22), 0 10px 20px rgba(0,0,0,.10); }
+    .top3 .avatarWrap{ border-color: var(--bronze); box-shadow:0 0 0 3px rgba(214,162,90,.18), 0 10px 20px rgba(0,0,0,.10); }
 
-    .top1 .name{ background: linear-gradient(90deg, rgba(251,191,36,.35), rgba(255,255,255,0)); padding:4px 10px; border-radius:12px; }
-    .top2 .name{ background: linear-gradient(90deg, rgba(203,213,225,.45), rgba(255,255,255,0)); padding:4px 10px; border-radius:12px; }
-    .top3 .name{ background: linear-gradient(90deg, rgba(214,162,90,.30), rgba(255,255,255,0)); padding:4px 10px; border-radius:12px; }
+    .top1 .name{ background:linear-gradient(90deg, rgba(251,191,36,.33), rgba(255,255,255,0)); padding:4px 10px; border-radius:12px; }
+    .top2 .name{ background:linear-gradient(90deg, rgba(203,213,225,.45), rgba(255,255,255,0)); padding:4px 10px; border-radius:12px; }
+    .top3 .name{ background:linear-gradient(90deg, rgba(214,162,90,.28), rgba(255,255,255,0)); padding:4px 10px; border-radius:12px; }
 
     .debug{
       margin-top:10px;
@@ -359,7 +257,7 @@
     }
     .debug.show{ display:block; }
 
-    /* ✅ الفوتر */
+    /* ✅ فوتر الحقوق مع © */
     .footer{
       margin-top:18px;
       text-align:center;
@@ -411,9 +309,7 @@
   <div class="grid" id="grid"></div>
   <div class="debug" id="debug"></div>
 
-  <!-- ✅ نهاية الصفحة -->
-  <div class="footer">حقوق الصفحة محفوظة نوف خبتي</div>
-
+  <div class="footer">© حقوق الصفحة محفوظة نوف خبتي</div>
 </div>
 
 <script>
@@ -451,13 +347,13 @@ function normalizePhoto(photo){
   let src = (photo || "").trim();
   if(!src) return "";
 
+  const idMatch = src.match(/id=([-\w]{25,})/);
+  if (idMatch && idMatch[1]) return `https://lh3.googleusercontent.com/d/${idMatch[1]}`;
+
   if (src.includes("drive.google.com/file/d/")) {
     const m = src.match(/\/d\/([-\w]{25,})/);
     if (m && m[1]) return `https://lh3.googleusercontent.com/d/${m[1]}`;
   }
-
-  const idMatch = src.match(/id=([-\w]{25,})/);
-  if (idMatch && idMatch[1]) return `https://lh3.googleusercontent.com/d/${idMatch[1]}`;
 
   if (/^[-\w]{25,}$/.test(src)) return `https://lh3.googleusercontent.com/d/${src}`;
 
@@ -572,10 +468,8 @@ function render(){
       <div class="card ${topClass}">
         <div class="rankBadge">#${i+1}</div>
 
-        <!-- ✅ الصورة قبل الاسم -->
         <div class="rightInfo">
           ${avatarHTML(r.name, r.photo)}
-
           <div class="info">
             <div class="nameRow">
               ${crownHTML(i)}
