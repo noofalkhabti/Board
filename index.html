@@ -140,7 +140,6 @@
       font-size:14px;
     }
 
-    /* ✅ تعريف الإيموجي */
     .legend{
       display:flex;
       gap:10px;
@@ -203,7 +202,7 @@
       box-shadow:0 6px 14px rgba(0,0,0,.1);
     }
 
-    /* ✅ يمين: الاسم + المعدل + الصورة */
+    /* ✅ يمين: الصورة ثم الاسم ثم المعدل */
     .rightInfo{
       display:flex;
       align-items:center;
@@ -259,7 +258,6 @@
       color:#7c2d12;
     }
 
-    /* ✅ يسار: التقييمات */
     .leftRates{
       display:flex;
       flex-direction:column;
@@ -295,7 +293,6 @@
     }
     .star.filled{ color:var(--star-on); }
 
-    /* ✅ الأفاتار */
     .avatarWrap{
       width:82px;
       height:82px;
@@ -311,7 +308,6 @@
       position:relative;
     }
 
-    /* ✅ قص أجمل للوجه */
     .avatarWrap img{
       width:100%;
       height:100%;
@@ -329,7 +325,7 @@
       color:#111;
     }
 
-    /* ✅ أول 3 طالبات: ألوان المراكز */
+    /* ✅ أول 3 */
     .top1 .avatarWrap{
       border-color: var(--gold);
       box-shadow: 0 0 0 3px rgba(251,191,36,.25), 0 10px 20px rgba(0,0,0,.10);
@@ -344,11 +340,6 @@
       border-color: var(--bronze);
       box-shadow: 0 0 0 3px rgba(214,162,90,.20), 0 10px 20px rgba(0,0,0,.10);
       background: linear-gradient(135deg, rgba(214,162,90,.22), rgba(183,121,31,.10), rgba(255,255,255,.40));
-    }
-
-    .top1 .rankBadge, .top2 .rankBadge, .top3 .rankBadge{
-      background:#fff;
-      border:1px solid rgba(0,0,0,.06);
     }
 
     .top1 .name{ background: linear-gradient(90deg, rgba(251,191,36,.35), rgba(255,255,255,0)); padding:4px 10px; border-radius:12px; }
@@ -367,6 +358,20 @@
       display:none;
     }
     .debug.show{ display:block; }
+
+    /* ✅ الفوتر */
+    .footer{
+      margin-top:18px;
+      text-align:center;
+      font-size:12px;
+      font-weight:900;
+      color:#6b7280;
+      padding:12px 10px;
+      background:rgba(255,255,255,.65);
+      border:1px solid rgba(0,0,0,.06);
+      border-radius:14px;
+      box-shadow:0 6px 14px rgba(0,0,0,.05);
+    }
   </style>
 </head>
 
@@ -392,7 +397,6 @@
       🔎 <input id="search" placeholder="ابحثي باسم الطالبة">
     </div>
 
-    <!-- ✅ تعريف الايموجي -->
     <div class="legend" aria-label="تعريف الرموز">
       <div class="item">🤝 <span>التعاون</span></div>
       <div class="item">👩‍🎓 <span>المشاركة</span></div>
@@ -401,12 +405,15 @@
       <div class="item">🎯 <span>الالتزام</span></div>
     </div>
 
-    <!-- ✅ حذفنا عبارة (السلوك عرض فقط) -->
     <div class="hint">⭐ المعدل = (المشاركة + التعاون + التركيز + الالتزام) ÷ 4</div>
   </div>
 
   <div class="grid" id="grid"></div>
   <div class="debug" id="debug"></div>
+
+  <!-- ✅ نهاية الصفحة -->
+  <div class="footer">حقوق الصفحة محفوظة نوف خبتي</div>
+
 </div>
 
 <script>
@@ -565,7 +572,10 @@ function render(){
       <div class="card ${topClass}">
         <div class="rankBadge">#${i+1}</div>
 
+        <!-- ✅ الصورة قبل الاسم -->
         <div class="rightInfo">
+          ${avatarHTML(r.name, r.photo)}
+
           <div class="info">
             <div class="nameRow">
               ${crownHTML(i)}
@@ -573,7 +583,6 @@ function render(){
             </div>
             <div class="avg">⭐ المعدل: <span style="direction:ltr; display:inline-block">${avgText}</span></div>
           </div>
-          ${avatarHTML(r.name, r.photo)}
         </div>
 
         <div class="leftRates">
