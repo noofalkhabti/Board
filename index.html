@@ -20,6 +20,15 @@
       --star-on:#fbbf24;
 
       --ring:#8fe0a5;
+
+      --gold:#fbbf24;
+      --gold2:#f59e0b;
+
+      --silver:#cbd5e1;
+      --silver2:#94a3b8;
+
+      --bronze:#d6a25a;
+      --bronze2:#b7791f;
     }
 
     body{
@@ -38,7 +47,6 @@
       padding:0 14px 30px;
     }
 
-    /* ✅ هيدر جديد: يمين عنوان اللوحة + يسار بيانات المدرسة */
     .header{
       display:flex;
       justify-content:space-between;
@@ -85,9 +93,8 @@
       font-weight:900;
     }
 
-    /* يسار الهيدر */
     .schoolBlock{
-      text-align:left; /* لأن هذا الجزء في الجانب الأيسر */
+      text-align:left;
       direction:rtl;
       min-width:220px;
       background:rgba(255,255,255,.65);
@@ -108,9 +115,7 @@
       justify-content:flex-start;
       white-space:nowrap;
     }
-    .schoolIcon{
-      font-size:16px;
-    }
+    .schoolIcon{ font-size:16px; }
 
     .toolbar{
       display:flex;
@@ -135,6 +140,28 @@
       font-size:14px;
     }
 
+    /* ✅ تعريف الإيموجي */
+    .legend{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      font-size:12px;
+      font-weight:900;
+      color:#374151;
+      background:rgba(255,255,255,.65);
+      border:1px solid rgba(0,0,0,.06);
+      border-radius:999px;
+      padding:8px 12px;
+      box-shadow:0 6px 14px rgba(0,0,0,.05);
+    }
+    .legend .item{
+      display:flex;
+      align-items:center;
+      gap:6px;
+      white-space:nowrap;
+    }
+
     .hint{
       font-size:12px;
       color:var(--muted);
@@ -156,11 +183,11 @@
       background:#fff;
       border-radius:22px;
       box-shadow:var(--shadow);
-      padding:14px 14px 12px;
+      padding:14px;
       position:relative;
       display:flex;
-      justify-content:space-between;
-      gap:12px;
+      align-items:center;
+      gap:14px;
       overflow:hidden;
     }
 
@@ -176,19 +203,69 @@
       box-shadow:0 6px 14px rgba(0,0,0,.1);
     }
 
-    .left{
+    /* ✅ يمين: الاسم + المعدل + الصورة */
+    .rightInfo{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      flex:0 0 auto;
+      margin-left:auto;
+    }
+
+    .info{
+      text-align:right;
+      min-width:220px;
+      max-width:360px;
+    }
+
+    .nameRow{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      justify-content:flex-end;
+      min-width:0;
+    }
+
+    .crown{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:28px;
+      height:28px;
+      border-radius:999px;
+      box-shadow:0 6px 14px rgba(0,0,0,.08);
+      font-size:16px;
+      flex:0 0 auto;
+      border:1px solid rgba(0,0,0,.08);
+    }
+    .crown.gold{ background:rgba(251,191,36,.22); border-color:rgba(245,158,11,.40); }
+    .crown.silver{ background:rgba(203,213,225,.35); border-color:rgba(148,163,184,.45); }
+    .crown.bronze{ background:rgba(214,162,90,.22); border-color:rgba(183,121,31,.40); }
+
+    .name{
+      font-weight:1000;
+      font-size:22px;
+      line-height:1.2;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      min-width:0;
+    }
+
+    .avg{
+      margin-top:6px;
+      font-size:14px;
+      font-weight:900;
+      color:#7c2d12;
+    }
+
+    /* ✅ يسار: التقييمات */
+    .leftRates{
       display:flex;
       flex-direction:column;
       gap:10px;
       flex:1 1 auto;
       min-width:0;
-    }
-
-    .rows{
-      display:flex;
-      flex-direction:column;
-      gap:10px;
-      padding-left:8px;
     }
 
     .row{
@@ -218,66 +295,65 @@
     }
     .star.filled{ color:var(--star-on); }
 
-    .right{
-      display:flex;
-      align-items:center;
-      gap:14px;
-      flex:0 0 auto;
-    }
-
-    .info{
-      text-align:right;
-      min-width:220px;
-      max-width:360px;
-    }
-    .name{
-      font-weight:1000;
-      font-size:22px;
-      line-height:1.2;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-    }
-
-    .avg{
-      margin-top:6px;
-      font-size:14px;
-      font-weight:900;
-      color:#7c2d12;
-    }
-
+    /* ✅ الأفاتار */
     .avatarWrap{
-      width:74px;
-      height:74px;
+      width:82px;
+      height:82px;
       border-radius:50%;
       border:4px solid var(--ring);
       display:flex;
       align-items:center;
       justify-content:center;
       background:linear-gradient(135deg, rgba(34,197,94,.12), rgba(168,85,247,.10), rgba(249,115,22,.10));
-      flex:0 0 auto;
       overflow:hidden;
-      position:relative;
       user-select:none;
+      flex:0 0 auto;
+      position:relative;
     }
 
-    /* ✅ ضبط مقاس الصورة داخل الدائرة */
+    /* ✅ قص أجمل للوجه */
     .avatarWrap img{
       width:100%;
       height:100%;
       object-fit:cover;
-      object-position:center;
-      transform:scale(0.92); /* عدّليها إلى 0.85 لو تبين الصورة أصغر */
+      object-position: 50% 30%;
+      transform: scale(1.12);
       border-radius:50%;
       display:block;
       pointer-events:none;
     }
 
     .letter{
-      font-size:28px;
+      font-size:30px;
       font-weight:1000;
       color:#111;
     }
+
+    /* ✅ أول 3 طالبات: ألوان المراكز */
+    .top1 .avatarWrap{
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(251,191,36,.25), 0 10px 20px rgba(0,0,0,.10);
+      background: linear-gradient(135deg, rgba(251,191,36,.20), rgba(245,158,11,.10), rgba(255,255,255,.40));
+    }
+    .top2 .avatarWrap{
+      border-color: var(--silver);
+      box-shadow: 0 0 0 3px rgba(203,213,225,.25), 0 10px 20px rgba(0,0,0,.10);
+      background: linear-gradient(135deg, rgba(203,213,225,.35), rgba(148,163,184,.10), rgba(255,255,255,.40));
+    }
+    .top3 .avatarWrap{
+      border-color: var(--bronze);
+      box-shadow: 0 0 0 3px rgba(214,162,90,.20), 0 10px 20px rgba(0,0,0,.10);
+      background: linear-gradient(135deg, rgba(214,162,90,.22), rgba(183,121,31,.10), rgba(255,255,255,.40));
+    }
+
+    .top1 .rankBadge, .top2 .rankBadge, .top3 .rankBadge{
+      background:#fff;
+      border:1px solid rgba(0,0,0,.06);
+    }
+
+    .top1 .name{ background: linear-gradient(90deg, rgba(251,191,36,.35), rgba(255,255,255,0)); padding:4px 10px; border-radius:12px; }
+    .top2 .name{ background: linear-gradient(90deg, rgba(203,213,225,.45), rgba(255,255,255,0)); padding:4px 10px; border-radius:12px; }
+    .top3 .name{ background: linear-gradient(90deg, rgba(214,162,90,.30), rgba(255,255,255,0)); padding:4px 10px; border-radius:12px; }
 
     .debug{
       margin-top:10px;
@@ -298,7 +374,6 @@
 <div class="wrap">
 
   <div class="header">
-    <!-- ✅ يمين: عنوان اللوحة + عداد الطالبات -->
     <div class="titleBlock">
       <div class="titleRow">🌟 لوحة تحفيز فيزياء ٣-٢ للصف الثالث ثانوي شعبة ٢</div>
       <div class="metaRow">
@@ -306,7 +381,6 @@
       </div>
     </div>
 
-    <!-- ✅ يسار: بيانات المدرسة والمعلمة -->
     <div class="schoolBlock">
       <div class="schoolLine"><span class="schoolIcon">🏫</span>الثانوية الأولى في بيشة</div>
       <div class="schoolLine"><span class="schoolIcon">👩‍🏫</span>معلمة المادة/ نوف خبتي</div>
@@ -317,7 +391,18 @@
     <div class="search">
       🔎 <input id="search" placeholder="ابحثي باسم الطالبة">
     </div>
-    <div class="hint">⭐ المعدل = (المشاركة + التعاون + التركيز + الالتزام) ÷ 4 — السلوك عرض فقط</div>
+
+    <!-- ✅ تعريف الايموجي -->
+    <div class="legend" aria-label="تعريف الرموز">
+      <div class="item">🤝 <span>التعاون</span></div>
+      <div class="item">👩‍🎓 <span>المشاركة</span></div>
+      <div class="item">👀 <span>التركيز</span></div>
+      <div class="item">🧠 <span>السلوك</span></div>
+      <div class="item">🎯 <span>الالتزام</span></div>
+    </div>
+
+    <!-- ✅ حذفنا عبارة (السلوك عرض فقط) -->
+    <div class="hint">⭐ المعدل = (المشاركة + التعاون + التركيز + الالتزام) ÷ 4</div>
   </div>
 
   <div class="grid" id="grid"></div>
@@ -325,7 +410,6 @@
 </div>
 
 <script>
-/* 🔗 رابط الشيت (CSV) */
 const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSOzNBxayAq8XiJpmr8H-eX1tmzU4EJFJAgTuxG-nSuJz7V46dGRPYjjfoL00P7nPVnin-tVIp7otDR/pub?output=csv";
 
 const grid  = document.getElementById("grid");
@@ -335,14 +419,12 @@ const debug = document.getElementById("debug");
 
 let rows = [];
 
-/* ✅ أرقام من 0..5 */
 function clamp(n){
   const x = Number(n);
   if (Number.isNaN(x)) return 0;
   return Math.max(0, Math.min(5, x));
 }
 
-/* ✅ نجوم */
 function stars(v){
   v = clamp(v);
   let h = '<div class="stars">';
@@ -352,14 +434,12 @@ function stars(v){
   return h + '</div>';
 }
 
-/* ✅ استخراج أول حرف */
 function firstLetter(name){
   const t = (name || "").trim();
   if (!t) return "؟";
   return t.replace(/["']/g,"").trim().charAt(0) || "؟";
 }
 
-/* ✅ توحيد روابط الصور */
 function normalizePhoto(photo){
   let src = (photo || "").trim();
   if(!src) return "";
@@ -377,7 +457,6 @@ function normalizePhoto(photo){
   return src;
 }
 
-/* ✅ الأفاتار */
 function avatarHTML(name, photo){
   const letter = firstLetter(name);
   const src = normalizePhoto(photo);
@@ -395,7 +474,6 @@ function avatarHTML(name, photo){
   `;
 }
 
-/* ✅ CSV Parser صحيح */
 function parseCSV(text){
   const out = [];
   let row = [];
@@ -438,7 +516,6 @@ function parseCSV(text){
   return out.filter(r => r.some(cell => (cell||"").trim() !== ""));
 }
 
-/* ✅ تحويل إلى Objects */
 function toObjects(matrix){
   const headers = (matrix[0] || []).map(h => (h||"").trim());
   return matrix.slice(1).map(cells=>{
@@ -448,13 +525,19 @@ function toObjects(matrix){
   });
 }
 
-/* ✅ حساب المعدل (بدون السلوك) */
 function scoreRow(r){
   const p = clamp(r.participation);
   const c = clamp(r.cooperation);
   const f = clamp(r.focus);
   const k = clamp(r.commitment);
   return (p + c + f + k) / 4;
+}
+
+function crownHTML(i){
+  if (i === 0) return `<span class="crown gold" title="المركز الأول">👑</span>`;
+  if (i === 1) return `<span class="crown silver" title="المركز الثاني">👑</span>`;
+  if (i === 2) return `<span class="crown bronze" title="المركز الثالث">👑</span>`;
+  return "";
 }
 
 function render(){
@@ -469,32 +552,36 @@ function render(){
     const p = clamp(r.participation);
     const c = clamp(r.cooperation);
     const f = clamp(r.focus);
-    const b = clamp(r.behavior);   // عرض فقط
+    const b = clamp(r.behavior);
     const k = clamp(r.commitment);
 
     const avg = scoreRow(r).toFixed(1);
     const avgText = `${avg} / 5`;
 
+    const topClass = (i===0) ? "top1" : (i===1) ? "top2" : (i===2) ? "top3" : "";
+    const cleanName = (r.name||"طالبة").replace(/["']/g,"");
+
     return `
-      <div class="card">
+      <div class="card ${topClass}">
         <div class="rankBadge">#${i+1}</div>
 
-        <div class="left">
-          <div class="rows">
-            <div class="row"><div class="emoji">🤝</div>${stars(c)}</div>
-            <div class="row"><div class="emoji">👩‍🎓</div>${stars(p)}</div>
-            <div class="row"><div class="emoji">👀</div>${stars(f)}</div>
-            <div class="row"><div class="emoji">🧠</div>${stars(b)}</div>
-            <div class="row"><div class="emoji">🎯</div>${stars(k)}</div>
-          </div>
-        </div>
-
-        <div class="right">
+        <div class="rightInfo">
           <div class="info">
-            <div class="name">${(r.name||"طالبة").replace(/["']/g,"")}</div>
+            <div class="nameRow">
+              ${crownHTML(i)}
+              <div class="name">${cleanName}</div>
+            </div>
             <div class="avg">⭐ المعدل: <span style="direction:ltr; display:inline-block">${avgText}</span></div>
           </div>
           ${avatarHTML(r.name, r.photo)}
+        </div>
+
+        <div class="leftRates">
+          <div class="row"><div class="emoji">🤝</div>${stars(c)}</div>
+          <div class="row"><div class="emoji">👩‍🎓</div>${stars(p)}</div>
+          <div class="row"><div class="emoji">👀</div>${stars(f)}</div>
+          <div class="row"><div class="emoji">🧠</div>${stars(b)}</div>
+          <div class="row"><div class="emoji">🎯</div>${stars(k)}</div>
         </div>
       </div>
     `;
@@ -513,15 +600,6 @@ function render(){
     const matrix = parseCSV(text);
     const objs = toObjects(matrix);
 
-    const required = ["name","photo","participation","cooperation","focus","behavior","commitment"];
-    const headers = (matrix[0]||[]).map(x => (x||"").trim());
-    const missing = required.filter(k => !headers.includes(k));
-
-    if(missing.length){
-      debug.textContent = "⚠️ ناقص أعمدة في الصف الأول: " + missing.join(", ");
-      debug.classList.add("show");
-    }
-
     rows = objs;
     render();
   }catch(err){
@@ -533,7 +611,6 @@ function render(){
 
 search.addEventListener("input", render);
 
-// منع فتح الصور بالزر اليمين
 document.addEventListener("contextmenu", (e)=>{
   if (e.target.tagName === "IMG" || e.target.closest(".avatarWrap")) e.preventDefault();
 });
