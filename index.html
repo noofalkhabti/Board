@@ -25,6 +25,8 @@
       --bronze:#d6a25a;
     }
 
+    *{ box-sizing:border-box; }
+
     body{
       margin:0;
       font-family: system-ui, -apple-system, "Segoe UI", Tahoma, Arial;
@@ -38,9 +40,10 @@
     .wrap{
       max-width:1180px;
       margin:22px auto;
-      padding:0 14px 30px;
+      padding:0 14px 26px;
     }
 
+    /* ===== Header ===== */
     .header{
       display:flex;
       justify-content:space-between;
@@ -54,17 +57,29 @@
 
     .titleBlock{ display:flex; flex-direction:column; gap:8px; min-width:0; flex:1 1 auto; }
     .titleRow{
-      font-weight:1000; font-size:22px; line-height:1.25;
-      white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+      font-weight:1000;
+      font-size:22px;
+      line-height:1.25;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
     }
     .metaRow{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
     .badge{
-      font-size:13px; background:#fff; padding:7px 12px; border-radius:999px;
-      border:1px dashed #ccc; white-space:nowrap; color:#111; font-weight:900;
+      font-size:13px;
+      background:#fff;
+      padding:7px 12px;
+      border-radius:999px;
+      border:1px dashed #ccc;
+      white-space:nowrap;
+      color:#111;
+      font-weight:900;
     }
 
     .schoolBlock{
-      text-align:left; direction:rtl; min-width:220px;
+      text-align:left;
+      direction:rtl;
+      min-width:220px;
       background:rgba(255,255,255,.65);
       border:1px solid rgba(0,0,0,.06);
       border-radius:14px;
@@ -74,14 +89,24 @@
       flex:0 0 auto;
     }
     .schoolLine{
-      font-weight:1000; font-size:13px; color:#111827;
-      display:flex; gap:8px; align-items:center; justify-content:flex-start;
+      font-weight:1000;
+      font-size:13px;
+      color:#111827;
+      display:flex;
+      gap:8px;
+      align-items:center;
+      justify-content:flex-start;
       white-space:nowrap;
     }
     .schoolIcon{ font-size:16px; }
 
+    /* ===== Toolbar ===== */
     .toolbar{
-      display:flex; gap:10px; flex-wrap:wrap; margin:12px 0 10px; align-items:center;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin:12px 0 10px;
+      align-items:center;
     }
 
     .search{
@@ -91,12 +116,23 @@
       padding:10px 12px;
       box-shadow:0 6px 14px rgba(0,0,0,.06);
       border:1px solid #ddd;
+      min-width:240px;
     }
-    .search input{ width:100%; border:0; outline:0; font-size:14px; }
+    .search input{
+      width:100%;
+      border:0;
+      outline:0;
+      font-size:14px;
+    }
 
     .legend{
-      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
-      font-size:12px; font-weight:900; color:#374151;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      font-size:12px;
+      font-weight:900;
+      color:#374151;
       background:rgba(255,255,255,.65);
       border:1px solid rgba(0,0,0,.06);
       border-radius:999px;
@@ -104,19 +140,29 @@
       box-shadow:0 6px 14px rgba(0,0,0,.05);
     }
     .legend .item{ display:flex; align-items:center; gap:6px; white-space:nowrap; }
+
     .hint{ font-size:12px; color:var(--muted); font-weight:700; }
 
+    /* ===== Grid Responsive ===== */
     .grid{
       display:grid;
-      grid-template-columns:repeat(2,1fr);
+      grid-template-columns:repeat(3, 1fr); /* كمبيوتر */
       gap:12px;
     }
-    @media(max-width:900px){
-      .grid{grid-template-columns:1fr;}
-      .schoolBlock{width:100%; text-align:right;}
-      .header{align-items:stretch;}
+
+    /* آيباد (تقريبًا) */
+    @media (max-width: 1024px){
+      .grid{ grid-template-columns:repeat(2,1fr); }
+      .wrap{ max-width: 980px; }
     }
 
+    /* جوال */
+    @media (max-width: 640px){
+      .grid{ grid-template-columns:1fr; }
+      .wrap{ padding:0 10px 22px; margin:14px auto; }
+    }
+
+    /* ===== Card ===== */
     .card{
       background:#fff;
       border-radius:22px;
@@ -127,57 +173,40 @@
       align-items:center;
       gap:14px;
       overflow:hidden;
+      min-height:140px;
     }
 
-    /* ✅ ستيكر الترتيب */
-    .rankSticker{
+    /* رقم الترتيب يمين أعلى */
+    .rankBadge{
       position:absolute;
       top:10px;
       right:10px;
-      background:linear-gradient(135deg, rgba(251,191,36,.95), rgba(245,158,11,.92));
-      color:#111827;
-      border-radius:12px 12px 12px 4px;
+      background:#fff;
+      border-radius:999px;
       padding:6px 10px;
       font-size:13px;
       font-weight:1000;
-      box-shadow:0 10px 18px rgba(0,0,0,.12);
-      border:1px solid rgba(0,0,0,.08);
-      z-index:4;
-      transform: rotate(-2deg);
-    }
-    .rankSticker::after{
-      content:"";
-      position:absolute;
-      right:10px;
-      bottom:-7px;
-      width:14px; height:14px;
-      background:linear-gradient(135deg, rgba(251,191,36,.95), rgba(245,158,11,.92));
-      transform: rotate(45deg);
-      border-right:1px solid rgba(0,0,0,.08);
-      border-bottom:1px solid rgba(0,0,0,.08);
-      border-bottom-right-radius:3px;
+      box-shadow:0 6px 14px rgba(0,0,0,.10);
+      border:1px solid rgba(0,0,0,.06);
+      z-index:3;
     }
 
-    /* ✅ يمين: الصورة ثم الاسم */
+    /* يمين: الصورة ثم الاسم */
     .rightInfo{
       display:flex;
       align-items:center;
-      gap:14px;
+      gap:12px;
       flex:0 0 auto;
       margin-left:auto;
-      padding-right:48px; /* مساحة للستيكر */
+      padding-right:34px;
       position:relative;
     }
 
-    .info{
-      text-align:right;
-      min-width:220px;
-      max-width:360px;
-    }
+    .info{ text-align:right; min-width:200px; max-width:360px; }
 
     .nameRow{
       display:flex;
-      align-items:flex-start;
+      align-items:center;
       gap:8px;
       justify-content:flex-end;
       min-width:0;
@@ -194,59 +223,51 @@
       font-size:16px;
       flex:0 0 auto;
       border:1px solid rgba(0,0,0,.08);
-      margin-top:2px;
     }
     .crown.gold{ background:rgba(251,191,36,.22); border-color:rgba(245,158,11,.40); }
     .crown.silver{ background:rgba(203,213,225,.35); border-color:rgba(148,163,184,.45); }
     .crown.bronze{ background:rgba(214,162,90,.22); border-color:rgba(183,121,31,.40); }
 
-    /* ✅ الاسم يلف لسطرين عشان ما يضغط النجوم */
     .name{
       font-weight:1000;
-      font-size:22px;
+      font-size:20px;
       line-height:1.2;
-      min-width:0;
-      max-width:300px;
-      display:-webkit-box;
-      -webkit-line-clamp:2;
-      -webkit-box-orient:vertical;
+      white-space:nowrap;
       overflow:hidden;
       text-overflow:ellipsis;
-      word-break:break-word;
+      min-width:0;
     }
 
-    .avg{ margin-top:6px; font-size:14px; font-weight:900; color:#7c2d12; }
+    .avg{
+      margin-top:6px;
+      font-size:13px;
+      font-weight:900;
+      color:#7c2d12;
+    }
 
-    /* ✅ النجوم عرض ثابت: ما تنضغط أبدًا */
     .leftRates{
       display:flex;
       flex-direction:column;
       gap:10px;
-      flex:0 0 260px;     /* ثابت */
-      min-width:260px;    /* ثابت */
-    }
-
-    /* على الجوال نخليها مرنة */
-    @media(max-width:900px){
-      .leftRates{ flex:1 1 auto; min-width:0; }
+      flex:1 1 auto;
+      min-width:0;
     }
 
     .row{ display:flex; align-items:center; gap:10px; }
     .emoji{ width:28px; text-align:center; font-size:20px; line-height:1; }
 
-    .stars{ display:flex; gap:6px; direction:ltr; flex-wrap:nowrap; }
+    .stars{ display:flex; gap:6px; direction:ltr; flex-wrap:wrap; }
     .star{
       font-size:22px;
       color:var(--star-off);
       filter: drop-shadow(0 1px 0 rgba(0,0,0,.04));
       user-select:none;
-      flex:0 0 auto; /* ✅ يمنع أي ضغط */
     }
     .star.filled{ color:var(--star-on); }
 
     .avatarWrap{
-      width:82px;
-      height:82px;
+      width:74px;
+      height:74px;
       border-radius:50%;
       border:4px solid var(--ring);
       display:flex;
@@ -263,18 +284,23 @@
       width:100%;
       height:100%;
       object-fit:cover;
-      object-position: 50% 30%;
-      transform: scale(1.12);
+      object-position:50% 30%;
+      transform:scale(1.12);
       border-radius:50%;
       display:block;
       pointer-events:none;
     }
 
-    .letter{ font-size:30px; font-weight:1000; color:#111; }
+    .letter{ font-size:28px; font-weight:1000; color:#111; }
 
+    /* أول 3 */
     .top1 .avatarWrap{ border-color: var(--gold); box-shadow:0 0 0 3px rgba(251,191,36,.22), 0 10px 20px rgba(0,0,0,.10); }
     .top2 .avatarWrap{ border-color: var(--silver); box-shadow:0 0 0 3px rgba(203,213,225,.22), 0 10px 20px rgba(0,0,0,.10); }
     .top3 .avatarWrap{ border-color: var(--bronze); box-shadow:0 0 0 3px rgba(214,162,90,.18), 0 10px 20px rgba(0,0,0,.10); }
+
+    .top1 .name{ background:linear-gradient(90deg, rgba(251,191,36,.33), rgba(255,255,255,0)); padding:4px 10px; border-radius:12px; }
+    .top2 .name{ background:linear-gradient(90deg, rgba(203,213,225,.45), rgba(255,255,255,0)); padding:4px 10px; border-radius:12px; }
+    .top3 .name{ background:linear-gradient(90deg, rgba(214,162,90,.28), rgba(255,255,255,0)); padding:4px 10px; border-radius:12px; }
 
     .debug{
       margin-top:10px;
@@ -300,6 +326,53 @@
       border:1px solid rgba(0,0,0,.06);
       border-radius:14px;
       box-shadow:0 6px 14px rgba(0,0,0,.05);
+    }
+
+    /* ===== تحسين كبير للجوال: البطاقة تصبح عمودية ===== */
+    @media (max-width: 640px){
+      .header{
+        flex-direction:column;
+        align-items:stretch;
+      }
+      .titleRow{ font-size:18px; white-space:normal; }
+      .schoolBlock{ min-width:unset; text-align:right; }
+
+      .toolbar{ gap:8px; }
+      .legend{ border-radius:16px; }
+      .search{ min-width:unset; }
+
+      .card{
+        flex-direction:column;
+        align-items:stretch;
+        gap:10px;
+        padding:12px;
+      }
+
+      .rightInfo{
+        margin-left:0;
+        padding-right:0;
+        justify-content:space-between;
+      }
+
+      .rankBadge{
+        top:10px;
+        right:10px;
+        font-size:12px;
+        padding:5px 9px;
+      }
+
+      .avatarWrap{
+        width:64px;
+        height:64px;
+      }
+
+      .name{ font-size:18px; }
+      .avg{ font-size:12px; }
+
+      .leftRates{
+        gap:8px;
+      }
+      .star{ font-size:20px; }
     }
   </style>
 </head>
@@ -497,7 +570,7 @@ function render(){
 
     return `
       <div class="card ${topClass}">
-        <div class="rankSticker">#${i+1}</div>
+        <div class="rankBadge">#${i+1}</div>
 
         <div class="rightInfo">
           ${avatarHTML(r.name, r.photo)}
